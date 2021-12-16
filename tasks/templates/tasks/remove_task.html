@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Remove Task
+{% endblock %}
+
+{% block content %}
+       
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you want to delete "{{ task }}" target?</p> 
+        <input class="btn btn-danger" type="submit" role=button value="Yes" />
+        <a class="btn btn-outline-secondary" role=button href="/tasks">Cancel </a>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

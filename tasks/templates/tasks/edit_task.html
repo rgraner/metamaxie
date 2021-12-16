@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Edit Task
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ name.name }}</h1>
+
+    <form action="{% url 'tasks:edit_task' name.id %}" method='post'>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <!-- <label for="{{ form.player_for_label }}">Please select the players</label> -->
+        <!-- {{ form.player }} <br> -->
+        {% buttons %}
+            <button class="btn btn-primary" name="submit">submit</button>
+        {% endbuttons %}
+    </form>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

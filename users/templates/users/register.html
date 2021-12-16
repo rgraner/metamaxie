@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+        <!-- <h1>Register</h1> -->
+        <div class="mb-3 text-center">
+            <img src="/media/metamaxie-lg-01.svg" alt="" width="240" height="auto">
+        </div>
+        <p class="text-center">Already have an account? Then please <a href="{% url 'users:login' %}">Login</a></p> 
+        <form action="{% url 'users:register' %}" method='post'>
+            {% csrf_token %}
+            
+            <div class="col-md-12 mb-3">
+                {{ form.username|as_crispy_field }}
+            </div>
+    
+            <div class="col-md-12 mb-3">
+                {{ form.email|as_crispy_field }}
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.first_name|as_crispy_field }}
+                </div>
+    
+                <div class="col-md-6 mb-3">
+                    {{ form.last_name|as_crispy_field }}
+                </div>
+            </div>
+    
+            <div class="col-md-12 mb-3">
+                {{ form.password1|as_crispy_field }}
+            </div>
+    
+            <div class="col-md-12 mb-3">
+                {{ form.password2|as_crispy_field }}
+            </div>
+    
+            <div class="col-md-12 mb-3">
+                {{ form.type|as_crispy_field }}
+            </div>
+    
+            <button class="w-100 btn btn-primary btn-lg btn-block" name="submit">Register</button>
+            <input type="hidden" name="next" value="{% url 'scholarships:scholarships_table' %}">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    payment
+{% endblock %}
+
+{% block content %}
+
+    {% if user.type == "MANAGER" %}
+
+        <h1>Claims</h1>
+
+        {% if msg1 %}
+            <div class="alert alert-info" role="alert">{{ msg1 }}</div>
+        {% elif msg2 %}
+            <div class="alert alert-info" role="alert">{{ msg2 }}</div>
+        {% elif msg3 %}
+            <div class="alert alert-info" role="alert">{{ msg3 }}</div>  
+        {% endif %}
+
+        <div class="table-responsive">
+            <!-- {{ df_payment | safe }}<br>
+            <p>scholars</p> 
+            {{ df_scholars | safe }}<br>
+            <p>merged</p> 
+            {{ df_merged | safe }}<br>
+            <p>tasks</p>
+            {{ df_tasks | safe }}<br>
+            <p>scholar team</p>
+            {{ df_scholar_team | safe }}<br>
+            <p>merged b</p>
+            {{ df_merged_b | safe }}<br>
+            <p>merged c</p>
+            {{ df_merged_c | safe }}<br>
+            <p>df</p> -->
+            {{ df | safe }}
+        </div>
+
+    {% else %}
+        <p>oops...nothing here</p>
+    {% endif %}
+    
+{% endblock %}
+
+{% block script %}
+{% endblock %}

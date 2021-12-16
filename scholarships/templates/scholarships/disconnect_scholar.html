@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Disconnect Scholar
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ scholar }}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to disconnect "{{ scholar }}" from your team?</p> 
+        <input class="btn btn-danger" type="submit" role=button value="Yes" />
+        <a class="btn btn-outline-secondary" role=button href="/scholars">Cancel </a>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

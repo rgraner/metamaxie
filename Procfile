@@ -1,0 +1,1 @@
+web: gunicorn metamaxie_proj.wsgi --log-file -

@@ -1,0 +1,43 @@
+{% load static %}
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- favicon --> 
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+
+    <title>Metamaxie | {% block title %}{% endblock title %}</title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    
+        {% include 'navbar.html' %}
+        {% include 'offcanvas.html' %}
+
+    <div class="container mt-3 container py-3 h-100">
+        {% block content %}
+        {% endblock content %}
+    </div>
+        {% include 'footer.html' %}
+  </body>
+
+</html>
+
+{% block script %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Edit Scholarship
+{% endblock %}
+
+{% block content %}
+
+    {% if msg %}
+        <div class="alert alert-info d-flex flex-row" role="alert">Please give the code bellow to the scholar connect to your team.</div>
+        <h3 class="fw-bold">{{ manager.team_code }}</h3> 
+    {% else %}
+        <h1>{{ scholarship }}</h1>
+
+        <div class="col-4">
+            <form action="{% url 'scholarships:edit_scholarship' scholarship.id %}" method='post'>
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button class="btn btn-primary" name="submit">Submit</button>
+                {% endbuttons %}      
+            </form>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

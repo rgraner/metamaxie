@@ -1,0 +1,79 @@
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-light mb-4 py-3 border-bottom">
+    <div class="container">
+        {% if user.type == "MANAGER" %}
+            <a class="navbar-brand" href="{% url 'scholarships:scholarships_cards' %}"><img src="/media/metamaxie-lg-01.svg" alt="" width="180" height="auto"></a>
+        {% else %}
+            <a class="navbar-brand" href="{% url 'profiles:my_profile' %}"><img src="/media/metamaxie-lg-01.svg" alt="" width="180" height="auto"></a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            {% if user.type == "MANAGER" %}
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'scholarships:scholarships_cards' %}">Overview</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Tables
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="{% url 'scholarships:scholarships_table' %}">Scholarships</a></li>
+                          <li><a class="dropdown-item" href="{% url 'payments:payments' %}">Claims</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{% url 'scholarships:scholarships_table' %}">Scholarships</a>
+                    </li>    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'payments:payments' %}">Claims</a>
+                    </li>         -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tasks:tasks' %}">Target & Sharing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample">Summary</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <span class="navbar-text">Hello {{ user.username }}</span>&nbsp&nbsp
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbar-brand" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ user.avatar.url }}" alt="manager-profile" class="avatar-small">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'profiles:my_profile' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'scholarships:scholars' %}">Disconnect scholar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'users:logout' %}">Log out</a></li>
+                        </ul>
+                      </li>         
+                </ul>
+            {% else %}
+                <ul class="navbar-nav ms-auto">
+                    <span class="navbar-text">Hello {{ user.username }}</span>&nbsp&nbsp
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbar-brand" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ user.avatar.url }}" alt="manager-profile" class="avatar-small">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'profiles:my_profile' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'payments:scholar_table' %}">Table</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profiles:rules' %}">Rules</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'users:logout' %}">Log out</a></li>
+                        </ul>
+                    </li>         
+                </ul>
+            {% endif %}  
+        </div>
+    </div>
+</nav>
+{% endif %}
+
+{% block content %}{% endblock content %}

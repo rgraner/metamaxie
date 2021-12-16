@@ -1,0 +1,31 @@
+.not-visible {
+    display: none;
+}
+
+.avatar-big {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.avatar-small {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.font-nano {
+    font-size: 10px;
+}
+
+.font-small {
+    font-size: 12px;
+}
+
+.asteriskField {
+    display: none;
+}
+
+.rounded-10 {
+    border-radius: 1rem!important;
+}

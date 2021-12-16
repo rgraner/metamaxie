@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Edit User
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col col-lg-4">
+        <h1>{{ user.username }}</h1>
+        <form action="{% url 'profiles:edit_profile' %}" enctype="multipart/form-data" method='post' class=form>
+            {% csrf_token %}
+            {% if user.type == "MANAGER" %}
+                {% bootstrap_form form %}
+            {% else %}
+                {% bootstrap_form form %}
+                {% bootstrap_form form_more %}
+            {% endif %}
+            {% buttons %}
+                <button name="submit" class="btn btn-primary">Submit</button>
+            {% endbuttons %}     
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

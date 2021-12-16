@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Scholarships
+{% endblock %}
+
+{% block content %}
+
+    {% if user.type == "MANAGER" %}
+
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                <a href="{% url 'scholarships:add_scholarship' %}" class="btn btn-primary shadow mb-3" role="button">add scholarship</a>
+            </div>
+            <div class="p-2">
+                <a href="{% url 'scholarships:refresh' %}" class="btn btn-outline-success mb-3" role="button">refresh</a>
+            </div>
+            <div class="col-sm-4 mb-3">
+                <!-- <input id="search_here" class="form-control" placeholder="type here to search..."> -->
+            </div>
+        </div>
+        <div class="row" id="box">
+            {% for scholarship in scholarships %}
+                <div class="col-sm-3">
+                    <div class="card shadow rounded-10 mb-5" style="width: 20rem;">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ scholarship|truncatechars:20 }}</h4>
+                            <h6 class="card-subtitle mb-2 text-muted font-nano">{{ scholarship.ronin }}</h6><hr>                 
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><h4 class="mb-0">{{ scholarship.scholar.first_name|default:"None" }} {{ scholarship.scholar.last_name|truncatechars:10 }}</h4><p class="text-secondary font-small mb-1">scholar</p></li>
+                            </ul><hr class="mt-0">
+                            <div class="row">
+                                <div class="col">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h4 class="mb-0">{{ scholarship.mmr }}</h4><p class="text-secondary font-small mb-1">mmr</p></li>
+                                        <li class="list-group-item"><h4 class="mb-0">{{ scholarship.built_up_slp }}</h4><p class="text-secondary font-small mb-1">lifetime SLP</p></li>
+                                        <li class="list-group-item"><h4 class="mb-0">{{ scholarship.daily_slp_earned|floatformat:0 }}</h4><p class="text-secondary font-small mb-1">daily earnings</p></li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h4 class="mb-0">{{ scholarship.in_game_slp }}</h4><p class="text-secondary font-small mb-1">in game SLP</p></li>
+                                        <li class="list-group-item"><h4 class="mb-0">{{ scholarship.daily_average|floatformat:0 }}</h4><p class="text-secondary font-small mb-1">daily average</p></li>
+                                        <li class="list-group-item"><h4 class="mb-0">{{ scholarship.next_claim }}</h4><p class="text-secondary font-small mb-1">to the next claim</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'scholarships:edit_scholarship' scholarship.id %}" class="card-link">Assign a scholar</a>
+                            <a href="{% url 'scholarships:remove_scholarship' scholarship.id %}" class="card-link" >Delete</a>
+                        </div> 
+                    </div>                  
+                </div>
+            
+            {% empty %}
+                <div class="alert alert-info" role="alert">No scholarship have been added yet.</div> 
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <p>oops...nothing here</p>
+    {% endif %}
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        const data = '{{ scholarships_json }}'
+        console.log(data)
+
+        const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
+        console.log(rdata)
+
+        const input = document.getElementById('search_here')
+        console.log(input)
+
+        let filteredArr = []
+
+        input.addEventListener('keyup', (e)=>{
+            box.innerHTML = ""
+            filteredArr = rdata.filter(info=> info['scholarship'].includes(e.target.value))
+            console.log(filteredArr)
+            if (filteredArr.length>0){
+                filteredArr.map(info=>{
+                    box.innerHTML += `${info['scholarship']}`
+                })
+            } else {
+                box.innerHTML = 'No results found...'
+            }
+
+        })
+
+
+
+    </script>
+
+
+{% endblock %}

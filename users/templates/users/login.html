@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+
+<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col col-lg-4">
+        <div class="mb-3 text-center">
+            <img src="/media/metamaxie-lg-01.svg" alt="" width="240" height="auto">
+        </div>
+        <p class="text-center">Don't have an account? Then please<a href="{% url 'users:register' %}"> register</a> first.</p>
+        {% if form.errors %}
+            {{ msg }}
+            <p>Your username and password didn't match. PLease try again.</p>
+        {% endif %}
+
+        <form action="{% url 'users:login' %}" method='post'>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <input type="hidden" name="next" value="{% url 'scholarships:scholarships_table' %}">
+            <p><a class="" href="{% url 'users:password_reset' %}">Forgot Password?</a></p> 
+            {% buttons %}
+                <button class="w-100 btn btn-primary btn-lg btn-block" name="submit">Login</button>
+            {% endbuttons %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

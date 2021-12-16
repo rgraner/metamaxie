@@ -1,0 +1,53 @@
+{% if user.is_authenticated %}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group list-group-flush">
+
+      <h5 class="offcanvas-title mb-1">Daily income</h5>
+      <li class="list-group-item">  
+        <h4 class="mb-0">${{ total_daily_slp.total_daily_fiat_earned|floatformat:2 }}</h4>
+        <p class="font-small mb-0">USD earned today</p>
+      </li>
+      <li class="list-group-item mb-5">  
+        <h4 class="mb-0">{{ total_daily_slp.total_daily_slp_earned|floatformat:0 }}</h4>
+        <p class="font-small mb-0">SLP earned today</p>
+      </li>  
+
+      <h5 class="offcanvas-title mb-1">Daily outcome</h5>
+      <li class="list-group-item">  
+        <h4 class="mb-0">${{ total_daily_slp.total_daily_fiat_paid|floatformat:2 }}</h4>
+        <p class="font-small mb-0">USD paid today</p>
+      </li> 
+      <li class="list-group-item mb-5">  
+        <h4 class="mb-0">{{ total_daily_slp.total_daily_slp_paid|floatformat:0 }}</h4>
+        <p class="font-small mb-0">SLP paid today</p>
+      </li>
+
+      <h5 class="offcanvas-title mb-1">Total income</h5>
+      <li class="list-group-item">  
+        <h4 class="mb-0">${{ total_slp.total_fiat_earned|floatformat:2 }}</h4>
+        <p class="font-small mb-0">USD earned</p>
+      </li>
+      <li class="list-group-item mb-5">  
+        <h4 class="mb-0">{{ total_slp.total_slp_earned|floatformat:0 }}</h4>
+        <p class="font-small mb-0">SLP earned</p>
+      </li>  
+
+      <h5 class="offcanvas-title mb-1">Total outcome</h5>
+      <li class="list-group-item">  
+        <h4 class="mb-0">${{ total_slp.total_fiat_paid|floatformat:2 }}</h4>
+        <p class="font-small mb-0">USD paid</p>
+      </li> 
+      <li class="list-group-item">  
+        <h4 class="mb-0">{{ total_slp.total_slp_paid|floatformat:0 }}</h4>
+        <p class="font-small mb-0">SLP paid</p>
+      </li>
+       
+    </ul>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Scholarship
+{% endblock %}
+
+{% block content %}
+
+    {% if user.type == "MANAGER" %}
+
+        <h1>Scholarships</h1>
+        {% if msg1 %}
+            <div class="alert alert-info" role="alert">{{ msg1 }}</div>
+        {% elif msg2 %}
+            <div class="p-2">
+                <div class="alert alert-info" role="alert">{{ msg2 }}</div>
+                <a href="{% url 'scholarships:add_scholarship' %}" class="btn btn-primary shadow mb-3" role="button">add scholarship</a>
+            </div>
+        {% elif msg3 %}
+            <div class="alert alert-warning" role="alert">{{ msg3 }}</div>  
+        {% endif %}
+
+        <!-- <p>df_scholarship</p>
+        {{ df_scholarship | safe }}
+
+        <p>df_scholars</p>
+        {{ df_tasks | safe }}
+
+        <p>df_merged</p>
+        {{ df_merged | safe }}
+
+        <p>df_tasks</p>
+        {{ df_tasks | safe }}
+
+        <p>df_scholar_team</p>
+        {{ df_scholar_team | safe }}
+
+        <p>df_merged_b</p>
+        {{ df_merged_b | safe }}
+        
+        <p>df_merged_c</p>
+        {{ df_merged_c | safe }}
+
+        <p>df</p> -->
+        {{ df | safe }}
+
+        
+    {% else %}
+        <p>oops...nothing here</p>
+    {% endif %}
+    
+{% endblock %}
+
+
+
+{% block script %}
+{% endblock %}
+

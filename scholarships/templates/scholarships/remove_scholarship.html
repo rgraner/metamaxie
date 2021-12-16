@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Remove Scholarship
+{% endblock %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ scholarship }}" scholarship?</p> 
+        <input class="btn btn-danger" type="submit" role=button value="Yes" />
+        <a class="btn btn-outline-secondary" role=button href="/">Cancel </a>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

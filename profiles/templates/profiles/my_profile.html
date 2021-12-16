@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    My Profile
+{% endblock %}
+
+{% block content %}
+
+    {% if user.type == "MANAGER" %}
+
+        <div class="row">
+            <h1>{{ profile.username }}</h1>    
+            <p>{{ profile.first_name }} {{ profile.last_name }} | {{ profile.type|lower }}</p>      
+            <h5 class="mb-0">{{ team_code.team_code }}</h5><p class="font-small">team code</p>
+        </div>
+
+        <p><a href="{% url 'profiles:edit_profile' %}">edit</a></p>
+        <a href="{% url 'users:change_password' %}">change password</a>
+
+    {% else %} 
+
+        {% if msg %}
+            <div class="alert alert-info" role="alert">{{ msg }}</div> 
+            <p><a href="{% url 'profiles:edit_profile' %}">add code</a></p>
+        {% else %}
+
+        <div class="row">
+            <div class="col-sm-3">
+                <h1>{{ profile.username }}</h1><hr>
+                <p>{{ profile.first_name }} {{ profile.last_name }} | {{ profile.type|lower }}</p>
+            
+                <h6 class="mb-0">{{ team_code.team_code }}</h6><p class="font-small">team code</p>
+                <!-- <h5 class="mb-0">{{ scholarship.mmr }}</h5><p class="font-small">mmr</p>
+                <h5 class="mb-0">{{ scholarship.daily_average|floatformat:2 }}</h5><p class="font-small">daily average</p>
+                <h5 class="mb-0">{{ payment.average }}</h5><p class="font-small">average at last claim</p>
+                <h5 class="mb-0">{{ payment.slp_paid }}</h5><p class="font-small">last claim(SLP)</p> -->
+
+                <p><a href="{% url 'profiles:edit_profile' %}">edit</a></p>
+                <div class="mb-5"><a href="{% url 'users:change_password' %}">change password</a><hr></div>
+            </div>
+            <div class="col-sm-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">${{ scholarship.daily_fiat_paid|floatformat:2 }}</h4>
+                        <p class="font-small mb-0">USD daily earnings</p>
+                    </li>
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">{{ scholarship.daily_slp_paid|floatformat:0 }}</h4>
+                        <p class="font-small mb-0">SLP average daily earnings</p>
+                    </li> 
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">{{ scholarship.daily_average|floatformat:0 }}</h4>
+                        <p class="font-small mb-0">total daily average</p>
+                    </li>  
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">{{ payment.average|floatformat:2 }}</h4>
+                        <p class="font-small mb-0">average at last claim</p>
+                    </li>
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">{{ payment.slp_paid }}</h4>
+                        <p class="font-small mb-0">last claim</p>
+                    </li> 
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">{{ scholarship.next_claim }}</h4>
+                        <p class="font-small mb-0">to the next claim</p>
+                    </li>                  
+                </ul>
+            </div>
+
+            <div class="col-sm-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">${{ scholar_payment.total_fiat_earned|floatformat:2 }}</h4>
+                        <p class="font-small mb-0">total USD earnings</p>
+                    </li>
+                    <li class="list-group-item">  
+                        <h4 class="mb-0">{{ scholar_payment.total_slp_earned|floatformat:0 }}</h4>
+                        <p class="font-small mb-0">total SLP earnings</p>
+                    </li>                  
+                </ul>
+            </div>
+        </div>
+        
+        {% endif %}  
+     
+    {% endif %}
+
+            
+  
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

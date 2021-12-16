@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Target
+{% endblock %}
+
+{% block content %}
+
+    {% if user.type == "MANAGER" %}
+
+        <a class="btn btn-primary shadow mb-3" role="button" href="{% url 'tasks:add_task1a' %}">add target</a>
+
+        <div class="row">
+            {% for task in tasks %}
+                <div class="col-sm-3">
+                    <div class="card shadow rounded-10 mb-3" style="width: 18rem;">
+                        <div class="card-body">     
+                            <h5 class="card-title">{{ task }}</h5>
+                                <div class="card-text">
+
+                                    {% if task.task_1 != None and task.task_2 != None and task.task_3 != None and task.task_4 != None %}
+                                        {% if task.fixed_rate == True %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }} slp's</p>
+                                        {% else %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }}%</p>
+                                        {% endif %}
+                                        <p class="font-small mb-0">greater equal than {{ task.task_1 }} and smaller than {{ task.task_2 }}, you receive {{ task.rate_2 }}%</p>
+                                        <p class="font-small mb-0">greater equal than {{ task.task_2 }} and smaller than {{ task.task_3 }}, you receive {{ task.rate_3 }}%</p>
+                                        <p class="font-small mb-0">greater equal than {{ task.task_3 }} and smaller than {{ task.task_4 }}, you receive {{ task.rate_4 }}%</p>
+                                        <p class="font-small mb-0">greater equal than {{ task.task_4 }}, you receive {{ task.rate_5 }}%</p>
+                                    {% endif %}
+
+                                    {% if task.task_1 != None and task.task_2 != None and task.task_3 != None and task.task_4 == None %}
+                                        {% if task.fixed_rate == True %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }} slp's</p>
+                                        {% else %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }}%</p>
+                                        {% endif %}
+                                        <p class="font-small mb-0">greater equal than {{ task.task_1 }} and smaller than {{ task.task_2 }}, you receive {{ task.rate_2 }}%</p>
+                                        <p class="font-small mb-0">greater equal than {{ task.task_2 }} and smaller than {{ task.task_3 }}, you receive {{ task.rate_3 }}%</p>
+                                        <p class="font-small mb-0">greater equal than {{ task.task_3 }}, you receive {{ task.rate_4 }}%</p>
+                                    {% endif %}
+
+                                    {% if task.task_1 != None and task.task_2 != None and task.task_3 == None and task.task_4 == None %}
+                                        {% if task.fixed_rate == True %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }} slp's</p>
+                                        {% else %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }}%</p>
+                                        {% endif %}
+                                        <p class="font-small mb-0">greater equal than {{ task.task_1 }} and smaller than {{ task.task_2 }}, you receive {{ task.rate_2 }}%</p>
+                                        <p class="font-small mb-0">greater equal than {{ task.task_2 }}, you receive {{ task.rate_3 }}%</p>
+                                    {% endif %}
+
+                                    {% if task.task_1 != None and task.task_2 == None and task.task_3 == None and task.task_4 == None %}
+                                        {% if task.fixed_rate == True %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }} slp's</p>
+                                        {% else %}
+                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, you receive {{ task.rate_1 }}%</p>
+                                        {% endif %}
+                                        <p class="font-small mb-0">greater equal than {{ task.task_1 }}, you receive {{ task.rate_2 }}%</p>
+                                    {% endif %}
+                                    
+                                </div><hr>
+                            <h6 class="mb-1">Scholars</h6>
+                            {% for scholar in task.scholar.all %}
+                                <p class="font-small mb-0">{{ scholar }}</p>         
+                            {% endfor %}
+                            <hr>
+                            <a class="card-link" href="{% url 'tasks:edit_task' task.id %}">add scholar</a>
+                            <a class="card-link" href="{% url 'tasks:remove_task' task.id %}">delete</a>   
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="alert alert-info" role="alert">Add target to share SLP's with the scholar.</div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <p>oops...nothing here</p>
+    {% endif %}
+
+{% endblock %}
+
+

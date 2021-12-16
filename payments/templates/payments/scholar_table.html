@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Table
+{% endblock %}
+
+{% block content %}
+
+    {% if user.type == "SCHOLAR" %}
+
+        {% if msg %}
+            <div class="alert alert-info" role="alert">{{ msg }}</div>
+        {% else %}
+            <h1>Claims</h1>
+            <div class="table-responsive">
+                {{ df_scholar | safe }}
+            </div>
+        {% endif %}
+
+    {% else %}
+        <p>oops...nothing here</p>
+    {% endif %}
+    
+{% endblock %}
+
+{% block script %}
+{% endblock %}

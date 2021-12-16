@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Edit Task
+{% endblock %}
+
+{% block content %}
+
+    <form class="col-md-12" action="{% url 'tasks:add_task12b' %}" method='post'>
+        {% csrf_token %}
+
+        <div class="col-md-2 mb-3">
+            <label for="{{ form.name_for_label }}">target name</label>
+            {{ form.name|as_crispy_field }}
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="{{ form.task_1_for_label }}">average smaller than</label>
+            {{ form.task_1|as_crispy_field }}
+        </div>
+
+        <div class="col-md-2 mb-1">
+            <label for="{{ form.rate_1_for_label }}">you receive <span class="font-small">(% or absolute value if you choose fixed - only for this field)</span></label>
+            {{ form.rate_1|as_crispy_field }}
+        </div>
+        <div class="col-md-2 mb-3">
+            <div class="d-flex flex-row bd-highlight">
+                <div class="p-0 bd-highlight">
+                    {{ form.fixed_rate|as_crispy_field }}
+                </div>
+                <div class="p-0 bd-highlight">
+                    <label for="{{ form.fixed_ratefor_label }}">fixed<span 
+                        type="button"
+                        class="badge rounded-pill bg-secondary" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="right" 
+                        title="{{ tooltip }}" >?</span>
+                    </label>  
+                </div>   
+            </div>    
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="{{ form.task_2_for_label }}">average greater equal than {{ name.task_1 }} and smaller than</label>
+            {{ form.task_2|as_crispy_field }}
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="{{ form.rate_2_for_label }}">you receive(%)</label>
+            {{ form.rate_2|as_crispy_field }}
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label for="{{ form.rate_3_for_label }}">otherwise you receive(%)</label>
+            {{ form.rate_3|as_crispy_field }}
+        </div>
+
+        <!-- <div class="col-md-2 mb-3">
+        <label for="{{ form.task_3_for_label }}">daily average greater equal than {{ name.task_2 }} and smaller than</label>
+        {{ form.task_3|as_crispy_field }}
+        <label for="{{ form.rate_3_for_label }}">you pay(%)</label>
+        {{ form.rate_3|as_crispy_field }}<br>
+        </div>
+
+        <div class="col-md-2 mb-3">
+        <label for="{{ form.task_4_for_label }}">daily average greater equal than {{ name.task_3 }} and smaller than</label>
+        {{ form.task_4|as_crispy_field }}
+        <label for="{{ form.rate_4_for_label }}">you pay(%)</label>
+        {{ form.rate_4|as_crispy_field }}<br>
+        </div> -->
+
+        <button class="btn btn-primary" name="submit">+</button>
+        <a href="{% url 'tasks:tasks' %}" class="btn btn-primary" role="button">done</a>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
