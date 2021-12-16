@@ -1,1 +1,1 @@
-web: gunicorn metamaxie_proj.wsgi --log-file -
+web: python manage.py collectstatic --no-input; gunicorn metamaxie_proj.wsgi --log-file - --log-level debug
