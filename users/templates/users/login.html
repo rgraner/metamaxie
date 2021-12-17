@@ -12,7 +12,7 @@
         <div class="mb-3 text-center">
             <img src="/media/metamaxie-lg-01.svg" alt="" width="240" height="auto">
         </div>
-        <p class="text-center">Don't have an account? Then please<a href="{% url 'users:register' %}"> register</a> first.</p>
+        <p class="text-center">Don't have an account? Then please<a href="{% url 'users:register' %}"> register here</a></p>
         {% if form.errors %}
             {{ msg }}
             <p>Your username and password didn't match. PLease try again.</p>
