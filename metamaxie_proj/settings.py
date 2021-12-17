@@ -185,3 +185,5 @@ if DEBUG:
     elif os.environ.get('DEBUG') == 'FALSE':
         DEBUG = False
 
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
