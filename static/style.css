@@ -29,3 +29,8 @@
 .rounded-10 {
     border-radius: 1rem!important;
 }
+
+.badge {
+    padding: 0.35em 0.65em!important;
+    font-size: .60em!important;
+}
