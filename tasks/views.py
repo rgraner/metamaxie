@@ -30,7 +30,7 @@ def add_task1a(request):
             return redirect('tasks:add_task1b')
 
     tasks = Task.objects.all()
-    tooltip = "You can choose a fixed value for the first-rate to retain a minimum value, e.g, inputting 45 in this field ensures to you a minimum amount of 45 SLP's."
+    tooltip = "You can choose a fixed amount to retain a minimum value, e.g, inputting 45 ensures to you a minimum amount of 45 SLP's.(only for this field)"
 
     context = {
         'form': form, 
