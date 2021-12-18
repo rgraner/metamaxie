@@ -5,6 +5,7 @@ from .forms import EditScholarForm, EditManagerForm, EditScholarFormMore
 from users.models import User, ManagerTeam, ScholarTeam
 from scholarships.models import Scholarship
 from payments.models import Payment, TotalScholarSlp
+from payments.views import scholar_table
 
 
 @login_required
@@ -21,7 +22,8 @@ def my_profile(request):
         return render(request, 'profiles/my_profile.html', context)
     else:
         scholarteam = ScholarTeam.objects.get(scholar=request.user)
-        team_code = scholarteam.team_code 
+        team_code = scholarteam.team_code
+        scholar_table(request) # reload scholar table 
 
         if team_code!=None and Scholarship.objects.filter(scholar=request.user).exists()==False:                        
             context = {
