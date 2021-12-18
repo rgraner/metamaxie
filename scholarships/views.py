@@ -46,6 +46,7 @@ def scholarships_table(request):
         df_scholarship['daily_average'] = df_scholarship['in_game_slp'] / ((df_scholarship['now'] - df_scholarship['last_claim']) / np.timedelta64(1, 'D'))
 
         daily_average_list = df_scholarship['daily_average'].tolist()
+        print('dadadadada', len(daily_average_list), daily_average_list)
 
         ronins = Ronin.objects.all().filter(owner=request.user)
         ronin_list = []
@@ -247,13 +248,6 @@ def scholarships(request):
     scholarships = Scholarship.objects.order_by('last_claim', 'scholarship', 'scholar').filter(owner=request.user)
     scholarships_json = serializers.serialize("json", Scholarship.objects.filter(owner=request.user))
 
-    context = {
-        'scholarships': scholarships,
-        'scholarships_json': scholarships_json,
-        }
-
-    print('bgbgbgbgb', request.user.type)
-
     #reload the scholarships table page to get daily average
     if request.user.type=='MANAGER':
         if Scholarship.objects.filter(owner=request.user).exists():
@@ -261,7 +255,14 @@ def scholarships(request):
                 scholarships_table(request)
                 time.sleep(5)
                 payment_view(request)
-            
+
+    context = {
+        'scholarships': scholarships,
+        'scholarships_json': scholarships_json,
+        }
+
+    print('bgbgbgbgb', request.user.type)
+
     return render(request, 'scholarships/scholarships_cards.html', context)
 
 

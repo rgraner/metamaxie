@@ -95,10 +95,9 @@ WSGI_APPLICATION = 'metamaxie_proj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'metamaxie_db',
+        'NAME': 'metamaxiedb',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
