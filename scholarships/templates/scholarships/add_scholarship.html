@@ -8,14 +8,14 @@
 
 {% block content %}
 
-    <form action="{% url 'scholarships:add_scholarship' %}" method="post" class="form row g-3">
+    <form action="{% url 'scholarships:add_scholarship' %}" method="post" class="form row g-3"onsubmit="myBtn.disabled = true; return true;">
         <div class="col-4">
             {% csrf_token %}
             {{ form|crispy }}
         </div>
         <div class="col-auto">
             {% buttons %}
-                <button name="submit" class="btn btn-primary">Submit</button>
+                <button name="myBtn" class="btn btn-primary">Submit</button>
             {% endbuttons %}
         </div>
     </form>

@@ -5,7 +5,7 @@ from users.models import Scholar, Manager
 
 
 class Ronin(models.Model):
-    ronin = models.CharField(max_length=46, validators=[validate_ronin])
+    ronin = models.CharField(unique=True, max_length=46, validators=[validate_ronin])
     owner = models.ForeignKey(Manager, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
