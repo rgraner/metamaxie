@@ -9,13 +9,13 @@
 
     <h1>{{ name.name }}</h1>
 
-    <form action="{% url 'tasks:edit_task' name.id %}" method='post'>
+    <form action="{% url 'tasks:edit_task' name.id %}" method='post' onsubmit="myBtn.disabled = true; return true;">
         {% csrf_token %}
         {% bootstrap_form form %}
         <!-- <label for="{{ form.player_for_label }}">Please select the players</label> -->
         <!-- {{ form.player }} <br> -->
         {% buttons %}
-            <button class="btn btn-primary" name="submit">submit</button>
+            <button class="btn btn-primary" name="myBtn">submit</button>
         {% endbuttons %}
     </form>
 

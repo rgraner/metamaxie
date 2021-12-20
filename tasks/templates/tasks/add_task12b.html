@@ -7,6 +7,8 @@
 
 {% block content %}
 
+    <h1>Sharing & Target <a class="font-small" href="{% url 'tasks:help_task' %}">Need help?</a></h1>
+
     <form class="col-md-12" action="{% url 'tasks:add_task12b' %}" method='post'>
         {% csrf_token %}
 
