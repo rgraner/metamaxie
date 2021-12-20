@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Help
+{% endblock %}
+
+{% block content %}
+
+    {% if user.type == "MANAGER" %}
+    <h1 class="mb-5">Help</h1>
+    <div class="col-sm-6">
+    <h4>Let's take the following Target as an example. You can input up 5 tasks conditions as shown below:</h4>
+    <p>
+        If the average produced by the scholar is smaller than 75 SLP's, I will receive 60% of the amount at the claim.<br>
+        Greater equal than 75 and smaller than 120 SLP’s, I will receive 55%.<br>
+        Greater equal than 120 and smaller than 135, I receive 50%.<br>
+        Greater equal than 135 and smaller than 150, I receive 45%.<br>
+        Greater equal than 150, I receive 40%.
+    </p>
+    
+    <p>
+        Start by giving a name to the target to be identified when you assign it to a scholar.
+        Then, input the smaller number in the following field, in this example 75. 
+        The next field input is 60, which is the percentage you will receive if the scholar has produced less than 75 SLP's as an average. 
+        The following field labelled "otherwise, I receive.." means that if the scholar produced 75 or more SLP's you will input 55 according to the example and finally click the submit button.
+    </p>
+        <img src="/media/Sharing&Target-01.png" alt="">
+    <p>
+        <p class="fw-bold">After submit the form you will have 2 options:</p>
+    <p>
+        1-Click on the "done" button  and you will have a simple target described as follow:<br>
+        "Average smaller than 75, I receive 60%. Greater equal than 75, I receive 55%."<br><br>
+        2-Click on the "+" to continue inputting the others values presented in the example. From now, the process will be the same.
+
+        <h4>Fixed option</h4> 
+        You must have noticed a fixed option by the third field. When selected, the value will be absolute, that is, Instead of 60% in the example, you can input 45. This will ensure to you a minimum amount of 45 SLP's for an average of less than 75 SLP's. This is applied only to this field.
+    </p>
+</div>
+
+
+    {% else %}
+        <p>oops...nothing here</p>
+    {% endif %}
+
+{% endblock %}

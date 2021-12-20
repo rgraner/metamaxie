@@ -180,4 +180,10 @@ def remove_task(request, task_id):
     return render(request, 'tasks/remove_task.html', context)
 
 
+@login_required
+def help_task(request):
+
+    return render(request, 'tasks/help_task.html')
+
+
 

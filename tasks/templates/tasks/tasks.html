@@ -52,12 +52,16 @@
                                     {% endif %}
 
                                     {% if task.task_1 != None and task.task_2 == None and task.task_3 == None and task.task_4 == None %}
-                                        {% if task.fixed_rate == True %}
-                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, I receive {{ task.rate_1 }} slp's</p>
+                                        {% if task.rate_1 == task.rate_2 %}
+                                            <p class="font-small mb-0">I will receive {{ task.rate_2 }}% over any amount of SLP's produced by the scholar.</p>
                                         {% else %}
-                                            <p class="font-small mb-0">average smaller than {{ task.task_1 }}, I receive {{ task.rate_1 }}%</p>
+                                            {% if task.fixed_rate == True %}
+                                                <p class="font-small mb-0">average smaller than {{ task.task_1 }}, I receive {{ task.rate_1 }} slp's</p>
+                                            {% else %}
+                                                <p class="font-small mb-0">average smaller than {{ task.task_1 }}, I receive {{ task.rate_1 }}%</p>
+                                            {% endif %}
+                                            <p class="font-small mb-0">greater equal than {{ task.task_1 }}, I receive {{ task.rate_2 }}%</p>
                                         {% endif %}
-                                        <p class="font-small mb-0">greater equal than {{ task.task_1 }}, I receive {{ task.rate_2 }}%</p>
                                     {% endif %}
                                     
                                 </div><hr>
