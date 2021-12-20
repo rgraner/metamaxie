@@ -30,8 +30,8 @@
                 <p>{{ profile.first_name }} {{ profile.last_name }} | {{ profile.type|lower }}</p>
             
                 <h6 class="mb-0">{{ team_code.team_code }}</h6><p class="font-small">team code</p>
-                <!-- <h5 class="mb-0">{{ scholarship.mmr }}</h5><p class="font-small">mmr</p>
-                <h5 class="mb-0">{{ scholarship.daily_average|floatformat:2 }}</h5><p class="font-small">daily average</p>
+                <h5 class="mb-0">{{ scholarship.mmr }}</h5><p class="font-small">mmr</p>
+                <!-- <h5 class="mb-0">{{ scholarship.daily_average|floatformat:2 }}</h5><p class="font-small">daily average</p>
                 <h5 class="mb-0">{{ payment.average }}</h5><p class="font-small">average at last claim</p>
                 <h5 class="mb-0">{{ payment.slp_paid }}</h5><p class="font-small">last claim(SLP)</p> -->
 
@@ -46,11 +46,11 @@
                     </li>
                     <li class="list-group-item">  
                         <h4 class="mb-0">{{ scholarship.daily_slp_paid|floatformat:0 }}</h4>
-                        <p class="font-small mb-0">SLP average daily earnings</p>
+                        <p class="font-small mb-0">SLP daily earnings</p>
                     </li> 
                     <li class="list-group-item">  
                         <h4 class="mb-0">{{ scholarship.daily_average|floatformat:0 }}</h4>
-                        <p class="font-small mb-0">total daily average</p>
+                        <p class="font-small mb-0">daily average</p>
                     </li>  
                     <li class="list-group-item">  
                         <h4 class="mb-0">{{ payment.average|floatformat:2 }}</h4>
@@ -62,7 +62,7 @@
                     </li> 
                     <li class="list-group-item">  
                         <h4 class="mb-0">{{ scholarship.next_claim }}</h4>
-                        <p class="font-small mb-0">to the next claim</p>
+                        <p class="font-small mb-5">to the next claim</p>
                     </li>                  
                 </ul>
             </div>

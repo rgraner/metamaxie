@@ -11,13 +11,17 @@
     <div class="row">
         {% for t in task %}
             {% if t.task_1 != None %}
-                {% if t.fixed_rate == True %}
-                    <p> Average smaller than {{ t.task_1 }}, your earning will be the average subtracting {{ t.rate_1 }}.</p>
-                    <p>{{ t.rate_1 }} is the minimum established by the manager for their earning, therefore if your average is less than or equal to {{ t.rate_1 }} you will have no earns.</p>
-                    <p>Average greater equal than {{ t.task_1 }}, you receive {{ t.rate_2|sub:100|mul:-1 }}%.</p>
+                {% if t.rate_1 == t.rate_2 %}
+                    <p>You will receive {{ t.rate_2|sub:100|mul:-1 }}% over any amount of SLP's you have produced.</p>
                 {% else %}
-                    <p>Average smaller than {{ t.task_1 }}, you receive {{ t.rate_1|sub:100|mul:-1 }}%.</p>
-                    <p>Average greater equal than {{ t.task_1 }}, you receive {{ t.rate_2|sub:100|mul:-1 }}%.</p>
+                    {% if t.fixed_rate == True %}
+                        <p> Average smaller than {{ t.task_1 }}, your earning will be the average subtracting {{ t.rate_1 }}.</p>
+                        <p>{{ t.rate_1 }} is the minimum established by the manager for their earning, therefore if your average is less than or equal to {{ t.rate_1 }} you will have no earns.</p>
+                        <p>Average greater equal than {{ t.task_1 }}, you receive {{ t.rate_2|sub:100|mul:-1 }}%.</p>
+                    {% else %}
+                        <p>Average smaller than {{ t.task_1 }}, you receive {{ t.rate_1|sub:100|mul:-1 }}%.</p>
+                        <p>Average greater equal than {{ t.task_1 }}, you receive {{ t.rate_2|sub:100|mul:-1 }}%.</p>
+                    {% endif %}
                 {% endif %}
             {% endif %}
             {% if t.task_2 != None %}
