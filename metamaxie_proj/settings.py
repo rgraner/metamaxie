@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'metamaxie_proj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'metamaxiedb',
+        'NAME': 'metamaxiedb_heroku',
     }
 }
 

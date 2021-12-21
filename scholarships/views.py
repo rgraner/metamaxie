@@ -52,13 +52,15 @@ def scholarships_table(request):
         ronin_list = []
         for ronin in ronins:
             ronin_list.append(str(ronin))
-        
-        for i in range(len(api)):
-            api[i]['daily_average'] = daily_average_list[i]
-            api[i]['ronin'] = ronin_list[i]
 
-        for item in api:
-            s, _ = Scholarship.objects.filter(owner=request.user).get_or_create(scholarship=item['name'])
+        dict_scholarship = df_scholarship.to_dict('records')
+        
+        # for i in range(len(api)):
+        #     api[i]['daily_average'] = daily_average_list[i]
+        #     api[i]['ronin'] = ronin_list[i]
+
+        for item in dict_scholarship:
+            s, _ = Scholarship.objects.filter(owner=request.user).get_or_create(scholarship=item['scholarship'])
             s.daily_average = item['daily_average']
             s.owner = request.user
             s.save()
