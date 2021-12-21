@@ -9,7 +9,7 @@
 {% block content %}
 
     <form action="{% url 'scholarships:add_scholarship' %}" method="post" class="form row g-3"onsubmit="myBtn.disabled = true; return true;">
-        <div class="col-4">
+        <div class="col-sm-4">
             {% csrf_token %}
             {{ form|crispy }}
         </div>
