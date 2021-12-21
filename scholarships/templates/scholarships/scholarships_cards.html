@@ -27,7 +27,7 @@
                             <h4 class="card-title">{{ scholarship|truncatechars:20 }}</h4>
                             <h6 class="card-subtitle mb-2 text-muted font-nano">{{ scholarship.ronin }}</h6><hr>                 
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><h4 class="mb-0">{{ scholarship.scholar.first_name|default:"None" }} {{ scholarship.scholar.last_name|truncatechars:10 }}</h4><p class="text-secondary font-small mb-1">scholar</p></li>
+                                <li class="list-group-item"><h4 class="mb-0">{{ scholarship.scholar.first_name|default:"None"|title }} {{ scholarship.scholar.last_name|truncatechars:10|title }}</h4><p class="text-secondary font-small mb-1">scholar</p></li>
                             </ul><hr class="mt-0">
                             <div class="row">
                                 <div class="col">
