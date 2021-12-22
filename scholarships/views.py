@@ -357,9 +357,14 @@ def scholars(request):
 @login_required
 def disconnect_scholar(request, scholar_id):
     scholar = ScholarTeam.objects.get(id=scholar_id)
+    task = Task.objects.get(scholar=scholar)
+    taskscholar = task.scholar.get(id=scholar_id)
+
     if request.method=='POST':
         scholar.team_code = None
         scholar.save()
+        task.scholar.remove(taskscholar)
+        task.save()
 
         return HttpResponseRedirect("/scholars")
 
