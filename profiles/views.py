@@ -71,18 +71,24 @@ def edit_profile(request):
         return render(request, 'profiles/edit_profile.html', context)
 
     else:
-        team_code = ScholarTeam.objects.get(scholar=request.user)
+        scholar = ScholarTeam.objects.get(scholar=request.user)
         if request.method!='POST':
             form = EditScholarForm(instance=request.user)
-            form_more = EditScholarFormMore(instance=team_code)
+            form_more = EditScholarFormMore(instance=scholar)
         else:
             form = EditScholarForm(request.POST, request.FILES, instance=request.user)
-            form_more = EditScholarFormMore(instance=team_code, data=request.POST)
+            form_more = EditScholarFormMore(instance=scholar, data=request.POST)
             if form.is_valid():
                 form.save()
             if form_more.is_valid():
                 form_more.save()
                 return redirect('profiles:my_profile')
+        
+        scholar = ScholarTeam.objects.get(scholar=request.user)
+        if ManagerTeam.objects.filter(team_code=scholar.temp_code).exists():
+            manager = ManagerTeam.objects.get(team_code=scholar.temp_code)
+            scholar.team_code = manager
+            scholar.save()
 
         context = {
             'user': user, 

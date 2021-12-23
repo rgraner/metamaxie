@@ -101,6 +101,7 @@ class Manager(User):
 class ScholarTeam(models.Model):
     scholar = models.OneToOneField(User, on_delete=models.CASCADE)
     team_code = models.ForeignKey(ManagerTeam, on_delete=models.CASCADE, blank=True, null=True)
+    temp_code = models.CharField(max_length=10, blank=True, null=True)
 
     def __str__(self):
         return str(self.scholar)

@@ -24,8 +24,11 @@ class EditScholarForm(forms.ModelForm):
 
 class EditScholarFormMore(forms.ModelForm):
     class Meta:
-        team_code = forms.ModelChoiceField(queryset=ScholarTeam.objects.all())
+        #team_code = forms.ModelChoiceField(queryset=ScholarTeam.objects.all())
         model = ScholarTeam
         fields = [
-            'team_code',
+            'temp_code',
         ]
+        labels = {
+            'temp_code':'Team code',
+        }
