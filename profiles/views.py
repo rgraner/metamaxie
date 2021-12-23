@@ -82,13 +82,12 @@ def edit_profile(request):
                 form.save()
             if form_more.is_valid():
                 form_more.save()
+
+            if ManagerTeam.objects.filter(team_code=scholar.temp_code).exists():
+                manager = ManagerTeam.objects.get(team_code=scholar.temp_code)
+                scholar.team_code = manager
+                scholar.save()
                 return redirect('profiles:my_profile')
-        
-        scholar = ScholarTeam.objects.get(scholar=request.user)
-        if ManagerTeam.objects.filter(team_code=scholar.temp_code).exists():
-            manager = ManagerTeam.objects.get(team_code=scholar.temp_code)
-            scholar.team_code = manager
-            scholar.save()
 
         context = {
             'user': user, 
