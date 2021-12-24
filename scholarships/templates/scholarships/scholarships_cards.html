@@ -9,6 +9,10 @@
 
     {% if user.type == "MANAGER" %}
 
+        {% if msg %}
+            <div class="alert alert-danger" role="alert">{{ msg }}</div>        
+        {% endif %}
+
         <div class="d-flex flex-row">
             <div class="p-2">
                 <a href="{% url 'scholarships:add_scholarship' %}" class="btn btn-primary shadow mb-3" role="button">add scholarship</a>
@@ -28,7 +32,7 @@
                             <h4 class="card-title">{{ scholarship|truncatechars_middle:20 }}</h4>
                             <h6 class="card-subtitle mb-2 text-muted font-nano">{{ scholarship.ronin }}</h6><hr>                 
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><h4 class="mb-0">{{ scholarship.scholar.first_name|default:"None"|title }} {{ scholarship.scholar.last_name|truncatechars:10|title }}</h4><p class="text-secondary font-small mb-1">scholar</p></li>
+                                <li class="list-group-item"><h4 class="mb-0">{{ scholarship.scholar.first_name|default:"Nonee"|title }} {{ scholarship.scholar.last_name|truncatechars:10|title }}</h4><p class="text-secondary font-small mb-1">scholar</p></li>
                             </ul><hr class="mt-0">
                             <div class="row">
                                 <div class="col">

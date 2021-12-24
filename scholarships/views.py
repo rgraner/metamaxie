@@ -258,10 +258,26 @@ def scholarships(request):
                 time.sleep(5)
                 payment_view(request)
 
+    scholar_list = []
+    scholarships = Scholarship.objects.filter(owner=request.user)
+    for s in scholarships:
+        if s.scholar!=None:
+            scholar_list.append(s.scholar)
+            if len(scholar_list)!=0:
+                if len(set(scholar_list))!=len(scholar_list):
+                    msg = "Please, assign a scholar only one scholarship, otherwise, they will not be able to access their account. Click 'Assign a scholar' link again and in the dropdown menu select blank."
+                else:
+                    msg = ''
+        elif s.scholar==None and len(scholar_list)==0:
+            msg = ''
+
     context = {
         'scholarships': scholarships,
         'scholarships_json': scholarships_json,
+        'msg': msg,
         }
+
+    #print('fefefefefe', scholar_list)
 
     print('bgbgbgbgb', request.user.type)
 
@@ -311,8 +327,10 @@ def edit_scholarship(request, scholarship_id):
                 payment_view(request)
                 return redirect('scholarships:scholarships_cards')
 
-
-        context = {'scholarship': scholarship, 'form': form}
+        context = {
+            'scholarship': scholarship, 
+            'form': form,
+            }
 
         return render(request, 'scholarships/edit_scholarship.html', context)
     else:
@@ -368,9 +386,10 @@ def disconnect_scholar(request, scholar_id):
             task.scholar.remove(taskscholar)
             task.save()
         if Scholarship.objects.filter(scholar=scholar2).exists():
-            scholarscholarship = Scholarship.objects.get(scholar=scholar2)
-            scholarscholarship.scholar = None
-            scholarscholarship.save()
+            scholarscholarships = Scholarship.objects.filter(scholar=scholar2)
+            for s in scholarscholarships:
+                s.scholar = None
+                s.save()
 
         return HttpResponseRedirect("/scholars")
 
