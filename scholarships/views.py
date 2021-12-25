@@ -353,7 +353,7 @@ def edit_scholarship(request, scholarship_id):
 def remove_scholarship(request, scholarship_id):
     scholarship = Scholarship.objects.filter(owner=request.user).get(id=scholarship_id)
     ronin = Ronin.objects.filter(ronin=scholarship.ronin)
-    payment = Payment.objects.filter(ronin=scholarship.ronin).last()
+    payment = Payment.objects.filter(ronin=scholarship.ronin).first()
 
     if request.method=='POST':
         ronin.delete()
