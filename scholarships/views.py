@@ -250,38 +250,43 @@ def scholarships(request):
     scholarships = Scholarship.objects.order_by('last_claim', 'scholarship', 'scholar').filter(owner=request.user)
     scholarships_json = serializers.serialize("json", Scholarship.objects.filter(owner=request.user))
 
-    #reload the scholarships table page to get daily average
-    if request.user.type=='MANAGER':
-        if Scholarship.objects.filter(owner=request.user).exists():
-            if Scholarship.objects.filter(owner=request.user).last().daily_average==None:
-                scholarships_table(request)
-                time.sleep(5)
-                payment_view(request)
+    if len(scholarships)!=0:
+        #reload the scholarships table page to get daily average
+        if request.user.type=='MANAGER':
+            if Scholarship.objects.filter(owner=request.user).exists():
+                if Scholarship.objects.filter(owner=request.user).last().daily_average==None:
+                    scholarships_table(request)
+                    time.sleep(5)
+                    payment_view(request)
 
-    scholar_list = []
-    scholarships = Scholarship.objects.filter(owner=request.user)
-    for s in scholarships:
-        if s.scholar!=None:
-            scholar_list.append(s.scholar)
-            if len(scholar_list)!=0:
-                if len(set(scholar_list))!=len(scholar_list):
-                    msg = "Please, assign a scholar only one scholarship, otherwise, they will not be able to access their account. Click 'Assign a scholar' link again and in the dropdown menu select blank."
-                else:
-                    msg = ''
-        elif s.scholar==None and len(scholar_list)==0:
-            msg = ''
+        # create message
+        scholar_list = []
+        scholarships = Scholarship.objects.filter(owner=request.user)
+        for s in scholarships:
+            if s.scholar!=None:
+                scholar_list.append(s.scholar)
+                if len(scholar_list)!=0:
+                    if len(set(scholar_list))!=len(scholar_list):
+                        msg = "Please, assign a scholar only one scholarship, otherwise, they will not be able to access their account. Click 'Assign a scholar' link again and in the dropdown menu select blank."
+                    else:
+                        msg = ''
+            elif s.scholar==None and len(scholar_list)==0:
+                msg = ''
 
-    context = {
-        'scholarships': scholarships,
-        'scholarships_json': scholarships_json,
-        'msg': msg,
-        }
+        context = {
+            'scholarships': scholarships,
+            'scholarships_json': scholarships_json,
+            'msg': msg,
+            }
 
-    #print('fefefefefe', scholar_list)
+        #print('fefefefefe', scholar_list)
 
-    print('bgbgbgbgb', request.user.type)
+        print('bgbgbgbgb', request.user.type)
 
-    return render(request, 'scholarships/scholarships_cards.html', context)
+        return render(request, 'scholarships/scholarships_cards.html', context)
+    else:
+        msg2 = ''
+        return render(request, 'scholarships/scholarships_cards.html', {'msg2': msg2})
 
 
 @login_required
