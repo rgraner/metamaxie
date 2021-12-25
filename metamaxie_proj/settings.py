@@ -172,6 +172,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'metamaxie21@gmail.com'
 EMAIL_HOST_PASSWORD = 'jk\sdhfgudk@utf'
 
+
 # Heroku settings.
 if DEBUG:
     import django_heroku
