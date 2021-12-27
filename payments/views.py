@@ -44,9 +44,12 @@ def payment_view(request):
 
     if len(qs)!=0:
         df_payment['built_up_slp'] = df_payment['ronin_slp'] + df_payment['lifetime_slp']
-        time.sleep(3)
         df_payment['built_up_slp_shift'] = df_payment.groupby('scholarship')['built_up_slp'].shift(1)
         df_payment['last_claim_amount'] = df_payment['built_up_slp'] - df_payment['built_up_slp_shift']
+
+        df_payment.loc[(df_payment['last_claim_amount']<0), 'last_claim_amount'] = df_payment['last_claim_amount'] * -1
+
+
         df_payment['last_claim_shift'] = df_payment.groupby('scholarship')['last_claim'].shift(1)
         df_payment['period'] = round((df_payment['last_claim'] - df_payment['last_claim_shift']) / np.timedelta64(1, 'D'))
         df_payment['average'] = df_payment['last_claim_amount'] / df_payment['period']
