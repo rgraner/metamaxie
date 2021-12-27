@@ -210,13 +210,13 @@ def payment_view(request):
                 pd.options.display.float_format = '{:,.2f}'.format 
                         
                 context = {
-                    'df_payment': df_payment.to_html,
-                    'df_scholars': df_scholars.to_html,
-                    'df_merged': df_merged.to_html,
-                    'df_scholar_team': df_scholar_team.to_html,
-                    'df_tasks': df_tasks.to_html,
-                    'df_merged_b': df_merged_b.to_html,
-                    'df_merged_c': df_merged_c.to_html,             
+                    # 'df_payment': df_payment.to_html,
+                    # 'df_scholars': df_scholars.to_html,
+                    # 'df_merged': df_merged.to_html,
+                    # 'df_scholar_team': df_scholar_team.to_html,
+                    # 'df_tasks': df_tasks.to_html,
+                    # 'df_merged_b': df_merged_b.to_html,
+                    # 'df_merged_c': df_merged_c.to_html,             
                     'df': df.to_html(classes=["table", "table-bordered", "table-striped", "table-hover"]),
                     }
 
