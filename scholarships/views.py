@@ -179,7 +179,7 @@ def scholarships_table(request):
                     'scholarship', 
                     'scholar', 
                     'last_claim',  
-                    'lifetime_slp', 
+                    'built_up_slp', 
                     'in_game_slp', 
                     'mmr', 
                     'daily_average',

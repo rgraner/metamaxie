@@ -39,6 +39,7 @@
                 <div class="mb-5"><a href="{% url 'users:change_password' %}">change password</a><hr></div>
             </div>
             <div class="col-sm-3">
+                <h5>Daily</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">  
                         <h4 class="mb-0">${{ scholarship.daily_fiat_paid|floatformat:2 }}</h4>
@@ -68,6 +69,7 @@
             </div>
 
             <div class="col-sm-3">
+                <h5>Total<span class="font-small">(After claim)</span></h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">  
                         <h4 class="mb-0">${{ scholar_payment.total_fiat_earned|floatformat:2 }}</h4>
