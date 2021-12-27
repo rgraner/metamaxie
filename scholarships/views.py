@@ -43,7 +43,9 @@ def scholarships_table(request):
         df_scholarship['now'] = timezone.now()
         df_scholarship['now'] = pd.to_datetime(df_scholarship['now'].dt.strftime('%Y-%m-%d'))
         df_scholarship['last_claim'] = pd.to_datetime(df_scholarship['last_claim'].dt.strftime('%Y-%m-%d'))
-        df_scholarship['daily_average'] = df_scholarship['in_game_slp'] / ((df_scholarship['now'] - df_scholarship['last_claim']) / np.timedelta64(1, 'D'))
+        #df_scholarship['daily_average'] = df_scholarship['in_game_slp'] / ((df_scholarship['now'] - df_scholarship['last_claim']) / np.timedelta64(1, 'D'))
+        df_scholarship.loc[df_scholarship['in_game_slp']==0, 'daily_average'] = 0
+        df_scholarship.loc[df_scholarship['in_game_slp']>0, 'daily_average'] = df_scholarship['in_game_slp'] / ((df_scholarship['now'] - df_scholarship['last_claim']) / np.timedelta64(1, 'D'))
 
         daily_average_list = df_scholarship['daily_average'].tolist()
         print('dadadadada', len(daily_average_list), daily_average_list)
