@@ -26,8 +26,17 @@ def scholarships_table(request):
 
     api = local_api(request.user)
 
+    ronins = Ronin.objects.all().filter(owner=request.user)
+    ronin_list = []
+    for ronin in ronins:
+        ronin_list.append(ronin)
+
+    for i in range(len(api)):
+        api[i]['ronin'] = ronin_list[i]
+
     for item in api:
-        s = Scholarship.objects.filter(owner=request.user).get(scholarship=item['name'])
+        s = Scholarship.objects.filter(owner=request.user).get(ronin=item['ronin'])
+        s.scholarship=item['name']
         s.lifetime_slp = item['lifetime_slp']
         s.last_claim = item['last_claim']
         s.total_slp = item['total_slp']
