@@ -50,8 +50,6 @@ def payment_view(request):
         df_payment['period'] = round((df_payment['last_claim'] - df_payment['last_claim_shift']) / np.timedelta64(1, 'D'))
         df_payment['average'] = df_payment['last_claim_amount'] / df_payment['period']
 
-        
-
         manager = ManagerTeam.objects.get(manager=request.user)
         my_scholars = list(ScholarTeam.objects.filter(team_code=manager.id))
 
