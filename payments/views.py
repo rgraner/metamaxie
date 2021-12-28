@@ -41,9 +41,8 @@ def payment_view(request):
     qs = Payment.objects.all().values().filter(owner=request.user)
     df_payment = pd.DataFrame(qs)
 
-    df_payment.sort_values(by=['scholarship', 'id'],ascending=True, inplace=True)
-
     if len(qs)!=0:
+        df_payment.sort_values(by=['scholarship', 'id'],ascending=True, inplace=True)
         df_payment['built_up_slp'] = df_payment['ronin_slp'] + df_payment['lifetime_slp']
         df_payment['built_up_slp_shift'] = df_payment.groupby('scholarship')['built_up_slp'].shift(1)
         df_payment['last_claim_amount'] = df_payment['built_up_slp'] - df_payment['built_up_slp_shift']
