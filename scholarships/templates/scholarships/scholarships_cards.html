@@ -22,8 +22,8 @@
             </div>
             <div class="col-sm-4 mb-3">
                 <!-- <input id="search_here" class="form-control" placeholder="type here to search..."> -->
-            </div>
-        </div>
+            </div>      
+        </div>     
         <div class="row" id="box">
             {% for scholarship in scholarships %}
                 <div class="col-sm-3">
@@ -32,7 +32,7 @@
                             <h4 class="card-title">{{ scholarship|truncatechars_middle:20 }}</h4>
                             <h6 class="card-subtitle mb-2 text-muted font-nano">{{ scholarship.ronin }}</h6><hr>                 
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><h4 class="mb-0">{{ scholarship.scholar.first_name|default:"None"|title }} {{ scholarship.scholar.last_name|truncatechars:10|title }}</h4><p class="text-secondary font-small mb-1">scholar</p></li>
+                                <li class="list-group-item"><h4 class="mb-0">{{ scholarship.scholar.first_name|default:"None"|truncatechars:10|title }} {{ scholarship.scholar.last_name|truncatechars:10|title }}</h4><p class="text-secondary font-small mb-1">scholar</p></li>
                             </ul><hr class="mt-0">
                             <div class="row">
                                 <div class="col">

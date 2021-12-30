@@ -28,7 +28,7 @@ class RoninForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RoninForm, self).__init__(*args, **kwargs)
-        self.fields['ronin'].widget.attrs['placeholder'] = 'ronin:8a58f923000b8abe2de00001588f51019d4...'
+        self.fields['ronin'].widget.attrs['placeholder'] = 'ronin:xxxx...'
 
     def clean_ronin_address(self):
         ronin = self.cleaned_data['ronin']

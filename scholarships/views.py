@@ -247,7 +247,7 @@ def scholarships_table(request):
 
                 return render(request, 'scholarships/scholarships_table.html', context)
             except:
-                msg3 = 'Only one target is allowed per scholar. Please remove the scholar from one of the targets.'
+                msg3 = 'Only one rule is allowed per scholar. Please remove the scholar from one of the rules.'
                 return render(request, 'scholarships/scholarships_table.html', {'msg3': msg3})
         else:
             msg1 = 'You must assign a scholar to a scholarship in order to be listed in the table.'

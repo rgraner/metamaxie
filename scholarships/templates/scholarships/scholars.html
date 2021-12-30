@@ -9,18 +9,18 @@
     {% if user.type == "MANAGER" %}
 
     <h1>Scholars</h1>
+    <p>You have <strong>{{ scholars|length }}</strong> scholars on your team.</p>
 
-    {% for scholar in scholars  %}
+    {% for scholar in scholars|dictsort:"scholar.first_name"  %}
 
-        <ul class="list-group list-group-flush">  
+        <ul class="list-group list-group-flush">      
+            <li class="list-group-item">
+                    <p class="mb-0"><strong>{{ scholar }}</strong></p>
+                    <p class="mb-0">{{ scholar.scholar.first_name }} {{ scholar.scholar.last_name}}</p>
+                    <a href="{% url 'scholarships:disconnect_scholar' scholar.id %}" role="button">Disconnect</a>
+            </li>      
+        </ul><hr>
         
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">{{ scholar }}</div>
-              <a href="{% url 'scholarships:disconnect_scholar' scholar.id %}" role="button">Disconnect</a>
-            </div>
-          </li>
-        </ul>
         
     {% endfor %}
 
