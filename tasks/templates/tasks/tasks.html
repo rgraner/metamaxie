@@ -8,7 +8,10 @@
 
     {% if user.type == "MANAGER" %}
 
-        <a class="btn btn-primary shadow mb-3" role="button" href="{% url 'tasks:add_task1a' %}">add target</a>
+        <h1>Rules & Sharing</h1>
+        <p>Decide how much you are going to pay to your scholar depending on their gain.</p>
+
+        <a class="btn btn-primary shadow mb-3" role="button" href="{% url 'tasks:add_task1a' %}">add rule</a>
 
         <div class="row">
             {% for task in tasks %}
