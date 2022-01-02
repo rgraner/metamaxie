@@ -9,7 +9,7 @@
     {% if user.type == "MANAGER" %}
 
     <h1>Scholars</h1>
-    <p>You have <strong>{{ scholars|length }}</strong> scholars on your team.</p>
+    <p>You have <strong>{{ scholars|length }}</strong> scholars in your team.</p>
 
     {% for scholar in scholars|dictsort:"scholar.first_name"  %}
 
