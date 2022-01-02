@@ -34,3 +34,11 @@
     padding: 0.35em 0.65em!important;
     font-size: .60em!important;
 }
+
+.no-underline {
+    text-decoration: none!important;
+}
+
+.badge-scholar {
+    font-size: .70em!important;
+}

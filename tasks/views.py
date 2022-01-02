@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import AddTaskForm1, AddTaskForm2, EditTaskForm
 from .models import Task
+from users.models import ScholarTeam
 from scholarships.views import scholarships_table
 
 
@@ -179,6 +180,17 @@ def remove_task(request, task_id):
 
     return render(request, 'tasks/remove_task.html', context)
 
+
+@login_required
+def remove_scholar_from_task(request, scholar_id, task_id):
+    scholar = ScholarTeam.objects.get(id=scholar_id)
+    task = scholar.task_set.get(id=task_id)
+    
+    if request.method!='POST':
+        task.scholar.remove(scholar)
+        task.save()
+        return redirect('tasks:tasks')
+    
 
 @login_required
 def help_task(request):

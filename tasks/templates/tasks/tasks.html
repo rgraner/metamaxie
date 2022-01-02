@@ -70,7 +70,11 @@
                                 </div><hr>
                             <h6 class="mb-1">Scholars</h6>
                             {% for scholar in task.scholar.all %}
-                                <p class="font-small mb-0">{{ scholar }}</p>         
+                                <span class="badge badge-scholar rounded-pill bg-primary">{{ scholar }}
+                                    <span>
+                                        <a href="{% url 'tasks:remove_scholar_from_task' scholar.id task.id%}" class="link-light no-underline" data-bs-toggle="tooltip" data-bs-placement="right" title="Remove">&nbsp;&nbsp;x</a>
+                                    </span>
+                                </span>
                             {% endfor %}
                             <hr>
                             <a class="card-link" href="{% url 'tasks:edit_task' task.id %}">add scholar</a>
