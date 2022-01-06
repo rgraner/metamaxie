@@ -15,7 +15,7 @@ class Task(models.Model):
     rate_5 = models.IntegerField(blank=True, null=True)
     fixed_rate = models.BooleanField(default=False)
     scholar = models.ManyToManyField(ScholarTeam, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.name)
