@@ -1,3 +1,5 @@
 mm_env/
+.env
 __pycache__/
-latest.dump.*
+metamaxieSSH.pem
+latest.dump*
