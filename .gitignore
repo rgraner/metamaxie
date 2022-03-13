@@ -1,5 +1,4 @@
 mm_env/
-.env
 __pycache__/
 metamaxieSSH.pem
 latest.dump*

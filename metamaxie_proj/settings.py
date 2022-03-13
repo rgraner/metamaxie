@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = 'django-insecure-k#%+r%ur232y6axxjg$#vo!68hxe5_n$i@tq8&v4=!vrgt9$vl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -95,35 +94,10 @@ WSGI_APPLICATION = 'metamaxie_proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'metamaxiedb_heroku',
     }
 }
-
-DB_USERNAME = os.environ.get("POSTGRES_USER")
-DB_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
-DB_DATABASE = os.environ.get("POSTGRES_DB")
-DB_HOST = os.environ.get("POSTGRES_HOST")
-DB_PORT = os.environ.get("POSTGRES_PORT")
-DB_IS_AVAIL = all([
-    DB_USERNAME,
-    DB_PASSWORD,
-    DB_DATABASE,
-    DB_HOST,
-    DB_PORT,
-])
-
-if DB_IS_AVAIL:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': DB_DATABASE,
-            'USER': DB_USERNAME,
-            'PASSWORD': DB_PASSWORD,
-            'HOST': DB_HOST,
-            'PORT': DB_PORT,
-        }
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -191,17 +165,18 @@ LOGOUT_REDIRECT_URL ='users:login'
 AUTH_USER_MODEL = 'users.User'
 
 #SMTP configuration
-EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-SMTP_EMAIL_USE_TLS=1
-EMAIL_HOST_USER='metamaxie21@gmail.com'
-EMAIL_HOST_PASSWORD='jk\sdhfgudk@utf'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'metamaxie21@gmail.com'
+EMAIL_HOST_PASSWORD = 'jk\sdhfgudk@utf'
 
 
 # Heroku settings.
 if DEBUG:
     import django_heroku
+    import os
     django_heroku.settings(locals())
 
     if os.environ.get('DEBUG') == 'TRUE':
