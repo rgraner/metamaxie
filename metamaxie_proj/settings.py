@@ -171,6 +171,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'metamaxie21@gmail.com'
 EMAIL_HOST_PASSWORD = 'jk\sdhfgudk@utf'
+DEFAULT_FROM_EMAIL = 'default from email'
 
 
 # Heroku settings.
