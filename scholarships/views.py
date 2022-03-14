@@ -19,7 +19,8 @@ import time
 
 from metamaxie_proj.local_api import local_api, currency
 
-
+# Solution to get the scholarship name
+# https://graphql-gateway.axieinfinity.com/graphql?query={publicProfileWithRoninAddress(roninAddress:"ronin:RONIN_ADDRESS"){name}}
 
 @login_required
 def scholarships_table(request):
