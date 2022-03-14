@@ -165,12 +165,24 @@ LOGOUT_REDIRECT_URL ='users:login'
 AUTH_USER_MODEL = 'users.User'
 
 #SMTP configuration
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'metamaxie21@gmail.com'
+# EMAIL_HOST_PASSWORD = 'jk\sdhfgudk@utf'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = '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'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'metamaxie21@gmail.com'
-EMAIL_HOST_PASSWORD = 'jk\sdhfgudk@utf'
+DEFAULT_FROM_EMAIL = 'info@metamaxie.com'
+
+ADMINS = (
+    ('Metamaxie', 'ricardograner@gmail.com'),
+)
+MANAGERS = ADMINS
 
 
 # Heroku settings.
