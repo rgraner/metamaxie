@@ -172,6 +172,7 @@ LOGOUT_REDIRECT_URL ='users:login'
 AUTH_USER_MODEL = 'users.User'
 
 #SMTP configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('SENDGRID_EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('SENDGRID_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
