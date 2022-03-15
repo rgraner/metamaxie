@@ -19,7 +19,7 @@ import time
 
 from metamaxie_proj.local_api import local_api, currency
 
-# Solution to get the scholarship name
+# Solution to get the scholarship name from mavis api
 # https://graphql-gateway.axieinfinity.com/graphql?query={publicProfileWithRoninAddress(roninAddress:"ronin:RONIN_ADDRESS"){name}}
 
 @login_required
