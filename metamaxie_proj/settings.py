@@ -172,19 +172,12 @@ LOGOUT_REDIRECT_URL ='users:login'
 AUTH_USER_MODEL = 'users.User'
 
 #SMTP configuration
-# EMAIL_HOST = os.environ.get('SENDGRID_EMAIL_HOST')
-# EMAIL_HOST_USER = os.environ.get('SENDGRID_EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
-# EMAIL_PORT = os.environ.get('SENDGRID_EMAIL_PORT')
-# EMAIL_USE_TLS = os.environ.get('SENDGRID_EMAIL_USE_TLS')
-# DEFAULT_FROM_EMAIL = os.environ.get('SENDGRID_DEFAULT_FROM_EMAIL')
-
-EMAIL_HOST='smtp.sendgrid.net'
-EMAIL_HOST_USER='apikey' # this is exactly the value 'apikey'
-API_KEY='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'
-EMAIL_PORT=465
-EMAIL_USE_TLS=True
-DEFAULT_FROM_EMAIL='admin@metamaxie.com'
+EMAIL_HOST = os.environ.get('SENDGRID_EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('SENDGRID_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+EMAIL_PORT = os.environ.get('SENDGRID_EMAIL_PORT')
+EMAIL_USE_TLS = os.environ.get('SENDGRID_EMAIL_USE_TLS')
+DEFAULT_FROM_EMAIL = os.environ.get('SENDGRID_DEFAULT_FROM_EMAIL')
 
 
 # Heroku settings.
