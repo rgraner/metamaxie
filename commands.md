@@ -14,3 +14,7 @@ pg_restore --verbose --clean --no-acl --no-owner -h localhost -U myuser -d mydb 
 ```
 https://accounts.google.com/DisplayUnlockCaptcha
 ```
+# Sendgrid Heroku
+```
+heroku addons:create sendgrid:starter -a <your-heroku-app-name>
+```
