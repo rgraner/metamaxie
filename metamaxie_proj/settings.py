@@ -181,7 +181,7 @@ AUTH_USER_MODEL = 'users.User'
 
 EMAIL_HOST='smtp.sendgrid.net'
 EMAIL_HOST_USER='apikey' # this is exactly the value 'apikey'
-API_KEY='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'
+EMAIL_HOST_PASSWORD='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'
 EMAIL_PORT=465
 EMAIL_USE_TLS=True
 DEFAULT_FROM_EMAIL='admin@metamaxie.com'
