@@ -172,14 +172,12 @@ LOGOUT_REDIRECT_URL ='users:login'
 AUTH_USER_MODEL = 'users.User'
 
 #SMTP configuration
-EMAIL_BACKEND = 'sgbackend.SendGridBackend'
 EMAIL_HOST = os.environ.get('SENDGRID_EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('SENDGRID_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
 EMAIL_PORT = os.environ.get('SENDGRID_EMAIL_PORT')
 EMAIL_USE_TLS = os.environ.get('SENDGRID_EMAIL_USE_TLS')
 DEFAULT_FROM_EMAIL = os.environ.get('SENDGRID_DEFAULT_FROM_EMAIL')
-SENDGRID_API_KEY = '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'
 
 
 # Heroku settings.
