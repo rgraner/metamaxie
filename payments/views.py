@@ -10,22 +10,35 @@ from tasks.models import Task
 from scholarships.models import Scholarship, Ronin
 from users.models import Scholar, ScholarTeam, ManagerTeam
 
-from metamaxie_proj.local_api import local_api, currency
+from metamaxie_proj.local_api import local_api, local_api2, currency
 
 
 @login_required
 def payment_view(request):
 
     api = local_api(request.user)
+    api2 = local_api2(request.user) # fecth schplarship name absent in api
 
     ronins = Ronin.objects.all().filter(owner=request.user)
     ronin_list = []
     for ronin in ronins:
         ronin_list.append(str(ronin))
 
+    # create scholarship names list
+    temp = 'publicProfileWithRoninAddress'
+    scholarships_names = []
+    names_list = []
+    for dict in api2:
+        for key, value in dict.items():
+            if temp in value:
+                scholarships_names.append(value[temp])
+    for key in scholarships_names:
+        for value in key.values():
+            names_list.append(value)
+
     for i in range(len(api)):
         api[i]['ronin'] = ronin_list[i]
-
+        api[i]['name'] = names_list[i]
 
     for item in api:
         p, _ = Payment.objects.get_or_create(last_claim = item['last_claim'])

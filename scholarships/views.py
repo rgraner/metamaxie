@@ -17,7 +17,7 @@ import numpy as np
 import json
 import time
 
-from metamaxie_proj.local_api import local_api, currency
+from metamaxie_proj.local_api import local_api, local_api2, currency
 
 # Solution to get the scholarship name from mavis api
 # https://graphql-gateway.axieinfinity.com/graphql?query={publicProfileWithRoninAddress(roninAddress:"ronin:RONIN_ADDRESS"){name}}
@@ -26,14 +26,28 @@ from metamaxie_proj.local_api import local_api, currency
 def scholarships_table(request):
 
     api = local_api(request.user)
+    api2 = local_api2(request.user) # fecth schplarship name absent in api
 
     ronins = Ronin.objects.all().filter(owner=request.user)
     ronin_list = []
     for ronin in ronins:
         ronin_list.append(ronin)
 
+    # create scholarship names list
+    temp = 'publicProfileWithRoninAddress'
+    scholarships_names = []
+    names_list = []
+    for dict in api2:
+        for key, value in dict.items():
+            if temp in value:
+                scholarships_names.append(value[temp])
+    for key in scholarships_names:
+        for value in key.values():
+            names_list.append(value)
+
     for i in range(len(api)):
         api[i]['ronin'] = ronin_list[i]
+        api[i]['name'] = names_list[i]
 
     for item in api:
         s = Scholarship.objects.filter(owner=request.user).get(ronin=item['ronin'])
