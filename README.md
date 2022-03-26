@@ -1,2 +1,3 @@
-# metamaxie
-An Axie Infinity tracker.
+Metamaxie is a system is to tracks information from a game called Axie Infinity (axieinfinity.com).
+Axie Infinity is an NFT based online game that you play to earn cryptocurrency (SLP). In this way, people start to hire players to increase their earns and form teams. The relationship between the manager and the players or scholars is called scholarship. Having many scholarships becomes very complicated to administer. This system manages and display all the information coming from the game. and it is not only for managers but for players as well, who can get their individual performances there.
+When registering as a manager, you receive a code to give to your players in order to get them connected to your account and then form a team. The app allows the manager to create rules of how much they will share with each player depending on their gains.
