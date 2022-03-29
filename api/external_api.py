@@ -4,7 +4,7 @@ import datetime
 import requests
 
 
-def local_api(var):
+def external_api(var):
 
     ronins = Ronin.objects.all().filter(owner=var)
     
@@ -24,7 +24,7 @@ def local_api(var):
 
 
 # fecth schplarship name absent in api
-def local_api2(var):
+def external_api2(var):
 
     ronins = Ronin.objects.all().filter(owner=var).values_list('ronin', flat=True)
     ronins_0x = [ronin.replace('ronin:', '0x') for ronin in ronins]

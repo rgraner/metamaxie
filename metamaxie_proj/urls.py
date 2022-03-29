@@ -32,7 +32,8 @@ urlpatterns = [
     path('profiles/', include('profiles.urls', namespace='profiles')),
     path('', include('scholarships.urls', namespace='scholarships')),  
     path('payments/', include('payments.urls', namespace='payments')),
-    path('tasks/', include('tasks.urls', namespace='tasks')), 
+    path('tasks/', include('tasks.urls', namespace='tasks')),
+    path('api/', include('api.urls')), 
 ]
 
 # if settings.DEBUG:

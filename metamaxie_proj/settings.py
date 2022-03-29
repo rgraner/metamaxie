@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     'payments',
     'users',
     'profiles',
+    'api',
 
     # 3rd part apps
     'bootstrap5',
     'crispy_forms',
     'mathfilters',
+    'rest_framework',
 
     # Default apps
     'django.contrib.admin',

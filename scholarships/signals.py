@@ -2,13 +2,13 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from .models import Scholarship, Ronin
-from metamaxie_proj.local_api import local_api
+from api.external_api import external_api
 
 
 @receiver(post_save, sender=Ronin)
 def post_save_update_scholarship(sender, instance, **kwargs):
 
-    api = local_api(instance.owner)
+    api = external_api(instance.owner)
 
     for item in api:
         s, _ = Scholarship.objects.filter(owner=instance.owner).get_or_create(scholarship=item['name'])

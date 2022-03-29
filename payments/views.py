@@ -10,14 +10,14 @@ from tasks.models import Task
 from scholarships.models import Scholarship, Ronin
 from users.models import Scholar, ScholarTeam, ManagerTeam
 
-from metamaxie_proj.local_api import local_api, local_api2, currency
+from api.external_api import external_api, external_api2, currency
 
 
 @login_required
 def payment_view(request):
 
-    api = local_api(request.user)
-    api2 = local_api2(request.user) # fecth schplarship name absent in api
+    api = external_api(request.user)
+    api2 = external_api2(request.user) # fecth schplarship name absent in api
 
     ronins = Ronin.objects.all().filter(owner=request.user)
     ronin_list = []
