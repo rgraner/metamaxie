@@ -174,20 +174,20 @@ LOGOUT_REDIRECT_URL ='users:login'
 AUTH_USER_MODEL = 'users.User'
 
 #SMTP sendgrid
-# EMAIL_HOST = os.environ.get('SENDGRID_EMAIL_HOST')
-# EMAIL_HOST_USER = os.environ.get('SENDGRID_EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
-# EMAIL_PORT = os.environ.get('SENDGRID_EMAIL_PORT')
-# EMAIL_USE_TLS = os.environ.get('SENDGRID_EMAIL_USE_TLS')
-# DEFAULT_FROM_EMAIL = os.environ.get('SENDGRID_DEFAULT_FROM_EMAIL')
+EMAIL_HOST = os.environ.get('SENDGRID_EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('SENDGRID_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+EMAIL_PORT = os.environ.get('SENDGRID_EMAIL_PORT')
+EMAIL_USE_TLS = os.environ.get('SENDGRID_EMAIL_USE_TLS')
+DEFAULT_FROM_EMAIL = os.environ.get('SENDGRID_DEFAULT_FROM_EMAIL')
 
 #SMTP gmail
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('GMAIL_EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('GMAI_EMAIL_HOST_PASSWORD')
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = os.environ.get('GMAIL_EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.environ.get('GMAI_EMAIL_HOST_PASSWORD')
 
 
 # Heroku settings.
