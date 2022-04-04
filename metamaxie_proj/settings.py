@@ -182,7 +182,7 @@ AUTH_USER_MODEL = 'users.User'
 # DEFAULT_FROM_EMAIL = os.environ.get('SENDGRID_DEFAULT_FROM_EMAIL')
 
 #SMTP gmail
-EMAIL_BACKEND = os.environ.get('GMAIL_EMAIL_BACKEND')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('GMAIL_EMAIL_HOST')
 EMAIL_PORT = os.environ.get('GMAIL_EMAIL_PORT')
 EMAIL_USE_TLS = os.environ.get('GMAIL_EMAIL_USE_TLS')
