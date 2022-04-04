@@ -189,7 +189,7 @@ EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = os.environ.get('GMAIL_EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = os.environ.get('GMAI_EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = 'metamaxie21@gmail.com'
-EMAIL_HOST_PASSWORD = 'jk\sdhfgudk@utf'
+EMAIL_HOST_PASSWORD = 'xohhastuxlthddxs'
 
 # Heroku settings.
 if DEBUG:
